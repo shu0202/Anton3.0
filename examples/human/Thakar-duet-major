@@ -1,0 +1,32 @@
+% Example taken from Thakar by Georg Boenn
+% Originally in G-major ./parse.pl --output=human --fundamental=g --transpose=-1
+mode(major).
+choosenNote(1,1,37).
+choosenNote(1,2,36).
+choosenNote(1,3,37).
+choosenNote(1,4,39).
+choosenNote(1,5,39).
+choosenNote(1,6,42).
+choosenNote(1,7,41).
+choosenNote(1,8,39).
+choosenNote(1,9,34).
+choosenNote(1,10,36).
+choosenNote(1,11,37).
+partTimeMax(1,11).
+choosenNote(2,1,25).
+choosenNote(2,2,27).
+choosenNote(2,3,34).
+choosenNote(2,4,32).
+choosenNote(2,5,30).
+choosenNote(2,6,27).
+choosenNote(2,7,29).
+choosenNote(2,8,24).
+choosenNote(2,9,25).
+choosenNote(2,10,27).
+choosenNote(2,11,25).
+partTimeMax(2,11).
+style(duet).
+part(1).
+part(2).
+
+

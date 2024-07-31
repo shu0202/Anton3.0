@@ -1,0 +1,21 @@
+smodels version 2.28. Reading...done
+Answer: 1
+Stable Model: choosenNote(1,25) stepAt(1) choosenNote(2,24) stepAt(2) choosenNote(3,25) choosenNote(4,29) stepAt(4) stepBy(4,-2) choosenNote(5,27) stepAt(5) stepBy(5,-2) choosenNote(6,25) stepBy(1,-1) stepBy(2,1) leapAt(3) leapBy(3,4) 
+Answer: 2
+Stable Model: choosenNote(1,25) stepAt(1) choosenNote(2,24) stepAt(2) stepBy(2,-2) choosenNote(3,22) choosenNote(4,25) stepAt(4) choosenNote(5,27) stepAt(5) stepBy(5,-2) choosenNote(6,25) stepBy(1,-1) stepBy(4,2) leapAt(3) leapBy(3,3) 
+Answer: 3
+Stable Model: choosenNote(1,25) stepAt(1) choosenNote(2,24) stepAt(2) stepBy(2,-2) choosenNote(3,22) choosenNote(4,17) stepAt(4) stepBy(4,-2) choosenNote(5,15) stepAt(5) stepBy(5,-2) choosenNote(6,13) stepBy(1,-1) leapAt(3) leapBy(3,-5) 
+Answer: 4
+Stable Model: choosenNote(1,25) stepAt(1) choosenNote(2,24) stepAt(2) stepBy(2,-2) choosenNote(3,22) choosenNote(4,29) stepAt(4) stepBy(4,-2) choosenNote(5,27) stepAt(5) stepBy(5,-2) choosenNote(6,25) stepBy(1,-1) leapAt(3) leapBy(3,7) 
+Answer: 5
+Stable Model: choosenNote(1,25) stepAt(1) choosenNote(2,27) stepAt(2) stepBy(2,-2) choosenNote(3,25) choosenNote(4,22) stepAt(4) choosenNote(5,24) stepAt(5) choosenNote(6,25) stepBy(5,1) stepBy(1,2) stepBy(4,2) leapAt(3) leapBy(3,-3) 
+True
+Duration: 1.040
+Number of choice points: 7
+Number of wrong choices: 4
+Number of atoms: 1458
+Number of rules: 82721
+Number of picked atoms: 1446
+Number of forced atoms: 74
+Number of truth assignments: 31132
+Size of searchspace (removed): 51 (0)
