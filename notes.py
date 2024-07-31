@@ -20,7 +20,6 @@ class StaffWidget(QWidget):
         painter.setPen(QPen(Qt.black, 3))
         painter.setFont(QFont('Arial', 1))
 
-        # Draw staff lines
         for i in range(self.staff_lines):
             if i%2 == 0:
                 y = i * self.note_spacing + 30
@@ -33,7 +32,7 @@ class StaffWidget(QWidget):
         for i, note in enumerate(self.notes):
             painter.setPen(QPen(Qt.black, 3))
             painter.setFont(QFont('Arial', 35))
-            note_y = (self.staff_lines - 1 - note) * self.note_spacing + 30
+            note_y = (self.staff_lines - 1 - note) * self.note_spacing + 42
             note_pos = self.note_positions[note % len(self.note_positions)]
             painter.drawText(80 + i * 60, note_y, note_pos)
 
@@ -50,10 +49,10 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Adjustable Staff Notes')
+        self.setWindowTitle('Piece input interface')
 
         self.num_notes_input = QLineEdit()
-        self.num_notes_input.setPlaceholderText('Enter number of notes')
+        self.num_notes_input.setPlaceholderText('Enter the number of notes')
 
         self.confirm_button = QPushButton('Confirm')
         self.confirm_button.clicked.connect(self.create_notes)
@@ -80,7 +79,6 @@ class MainWindow(QMainWindow):
             self.staff.deleteLater()
             self.staff = None
 
-        # Clear all items from the note buttons layout
         while self.note_buttons_layout.count() > 0:
             item = self.note_buttons_layout.takeAt(0)
             if item:
@@ -152,7 +150,7 @@ class MainWindow(QMainWindow):
 
     def move_note_up(self, index):
         if self.staff and 0 <= index < len(self.staff.notes):
-            new_position = min(self.staff.notes[index] + 1, self.staff.staff_lines - 1)
+            new_position = min(self.staff.notes[index] + 1, self.staff.staff_lines)
             self.staff.set_note_position(index, new_position)
             print(f"Note {index + 1} position: {new_position}")
 
