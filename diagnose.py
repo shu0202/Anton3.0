@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QVBoxLayout, QPushButton, QLabel, QDialog, QLineEdit
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 import subprocess
 import re
+from notes import NotesEditor
 
 class Worker(QThread):
     finished = pyqtSignal()
@@ -96,18 +97,25 @@ class Diagnose(QDialog):
 
         vbox = QVBoxLayout(self)
 
+        self.piece_dir_line_edit = QLineEdit(self)
+        vbox.addWidget(self.piece_dir_line_edit)
+
         browse_button = QPushButton("Browse")
-        #browse_button.setStyleSheet(button_style)
         browse_button.clicked.connect(self.browse_diagnose_dir)
         vbox.addWidget(browse_button)
 
-        self.piece_dir_line_edit = QLineEdit(self)
-        vbox.addWidget(self.piece_dir_line_edit)
+        open_notes_button = QPushButton("Open Notes Editor")
+        open_notes_button.clicked.connect(self.open_notes_interface)
+        vbox.addWidget(open_notes_button)
 
         confirm_button = QPushButton("Confirm")
         confirm_button.setStyleSheet(button_style)
         confirm_button.clicked.connect(self.confirm_mode)
         vbox.addWidget(confirm_button)
+
+    def open_notes_interface(self):
+        self.notes_window = NotesEditor()
+        self.notes_window.show()
     
     def browse_diagnose_dir(self):
         directory = QFileDialog.getOpenFileName(self, "Select a piece", self.diagnose_dir)
@@ -154,6 +162,13 @@ class Diagnose(QDialog):
         output_dialog.exec_()
         
         self.accept()
+
+if __name__ == "__main__":
+    app = QApplication([])
+    popup = Diagnose()
+    popup.show()  # Use show() to allow non-modal behavior
+    sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     app = QApplication([])

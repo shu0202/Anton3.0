@@ -1,1 +1,1 @@
-central_widget
+QDialog
