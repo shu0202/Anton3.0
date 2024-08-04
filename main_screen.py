@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPu
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.diagnose_popup = None
         self.initUI()
 
     def initUI(self):
@@ -28,14 +29,14 @@ class MainWindow(QMainWindow):
 
         button_style = """
             QPushButton {
-                background-color: #4CAF50;
+                background-color: #6A6A6A  ;
                 color: white;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
             }
             QPushButton:hover {
-                background-color: #3e8e41;
+                background-color: #11A9FF;
             }
         """
 
@@ -68,8 +69,9 @@ class MainWindow(QMainWindow):
         compose_popup.exec_()
 
     def diagnose_see(self):
-        diagnose_popup = Diagnose()
-        diagnose_popup.exec_()
+        if self.diagnose_popup == None:
+            self.diagnose_popup = Diagnose()
+        self.diagnose_popup.show()
 
     def option_see(self):
         option_popup = Option()

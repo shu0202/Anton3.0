@@ -65,14 +65,14 @@ class Compose(QDialog):
 
         button_style = """
             QPushButton {
-                background-color: #4CAF50;
+                background-color: #6A6A6A  ;
                 color: white;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
             }
             QPushButton:hover {
-                background-color: #3e8e41;
+                background-color: #11A9FF;
             }
         """
 

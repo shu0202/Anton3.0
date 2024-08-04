@@ -84,14 +84,27 @@ class Diagnose(QDialog):
 
         button_style = """
             QPushButton {
-                background-color: #4CAF50;
+                background-color: #6A6A6A  ;
                 color: white;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
             }
             QPushButton:hover {
-                background-color: #3e8e41;
+                background-color: #11A9FF;
+            }
+        """
+
+        button_style_small = """
+            QPushButton {
+                background-color: #6A6A6A  ;
+                color: white;
+                padding: 2px 20px;
+                border: none;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #11A9FF;
             }
         """
 
@@ -101,12 +114,14 @@ class Diagnose(QDialog):
         vbox.addWidget(self.piece_dir_line_edit)
 
         browse_button = QPushButton("Browse")
+        browse_button.setStyleSheet(button_style_small)
         browse_button.clicked.connect(self.browse_diagnose_dir)
         vbox.addWidget(browse_button)
 
-        open_notes_button = QPushButton("Open Notes Editor")
-        open_notes_button.clicked.connect(self.open_notes_interface)
-        vbox.addWidget(open_notes_button)
+        editor_button = QPushButton("Open Notes Editor")
+        editor_button.setStyleSheet(button_style_small)
+        editor_button.clicked.connect(self.open_notes_interface)
+        vbox.addWidget(editor_button)
 
         confirm_button = QPushButton("Confirm")
         confirm_button.setStyleSheet(button_style)
@@ -166,11 +181,5 @@ class Diagnose(QDialog):
 if __name__ == "__main__":
     app = QApplication([])
     popup = Diagnose()
-    popup.show()  # Use show() to allow non-modal behavior
+    popup.show()
     sys.exit(app.exec_())
-
-
-if __name__ == "__main__":
-    app = QApplication([])
-    popup = Diagnose()
-    popup.exec_()

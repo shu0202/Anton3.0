@@ -11,14 +11,27 @@ class Option(QDialog):
 
         button_style = """
             QPushButton {
-                background-color: #4CAF50;
+                background-color: #6A6A6A  ;
                 color: white;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
             }
             QPushButton:hover {
-                background-color: #3e8e41;
+                background-color: #11A9FF;
+            }
+        """
+
+        button_style_small = """
+            QPushButton {
+                background-color: #6A6A6A  ;
+                color: white;
+                padding: 2px 20px;
+                border: none;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #11A9FF;
             }
         """
 
@@ -26,8 +39,10 @@ class Option(QDialog):
 
         generate_layout = QHBoxLayout()
         generate_label = QLabel("Generate Pieces Directory:")
-        self.generate_dir_line_edit = QLineEdit(self.generate_dir)  # Initialize with saved directory
+        self.generate_dir_line_edit = QLineEdit(self.generate_dir)
         generate_browse_button = QPushButton("Browse")
+
+        generate_browse_button.setStyleSheet(button_style_small)
         generate_browse_button.clicked.connect(self.browse_generate_dir)
         generate_layout.addWidget(generate_label)
         generate_layout.addWidget(self.generate_dir_line_edit)
@@ -36,8 +51,9 @@ class Option(QDialog):
 
         diagnose_layout = QHBoxLayout()
         diagnose_label = QLabel("Diagnose Pieces Directory:")
-        self.diagnose_dir_line_edit = QLineEdit(self.diagnose_dir)  # Initialize with saved directory
+        self.diagnose_dir_line_edit = QLineEdit(self.diagnose_dir) 
         diagnose_browse_button = QPushButton("Browse")
+        diagnose_browse_button.setStyleSheet(button_style_small)
         diagnose_browse_button.clicked.connect(self.browse_diagnose_dir)
         diagnose_layout.addWidget(diagnose_label)
         diagnose_layout.addWidget(self.diagnose_dir_line_edit)
@@ -65,7 +81,7 @@ class Option(QDialog):
 
         self.save_directories(generate_dir, diagnose_dir)
 
-        self.directories_chosen.emit(generate_dir, diagnose_dir) #can delete
+        self.directories_chosen.emit(generate_dir, diagnose_dir)
 
         self.accept()
 
