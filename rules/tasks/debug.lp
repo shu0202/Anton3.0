@@ -28,5 +28,5 @@
 % Don't hide anything
 
 % No errors are allowed - operationally the same as compose.lp
-#domain reason(R).
- :- error(P,T,R).
+%#domain reason(R).
+ :- reason(R), error(P,T,R).

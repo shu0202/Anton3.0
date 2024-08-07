@@ -88,8 +88,8 @@ stepSize(-2).
 %#domain stepSize(S3).
 
 %% If we step, we must pick an amount to step by
-{ stepBy(P,T,SS) : stepSize(SS), SS < 0 } = 1 :- part(P), stepDown(P,T). %changed
-{ stepBy(P,T,SS) : stepSize(SS), SS > 0 } = 1 :- part(P), stepUp(P,T). %changed
+1 { stepBy(P,T,SS) : stepSize(SS), SS < 0 } 1 :- part(P), stepDown(P,T). %changed
+1 { stepBy(P,T,SS) : stepSize(SS), SS > 0 } 1 :- part(P), stepUp(P,T). %changed
 % (note that because of the structure of the mode
 %  there should only be one option for each of these)
 
@@ -119,8 +119,8 @@ choosenNote(P,T + 1,N) :- part(P), choosenNote(P,T,N), repeated(P,T). %changed
 
 rest(P,T + 1) :- part(P), rest(P,T), repeated(P,T). %changed
 rest(P,T + 1) :- part(P), toRest(P,T). %changed
-{ choosenNote(P,T + 1,NN) : note(NN) } = 1 :- part(P), fromRest(P,T). %changed
-{ choosenNote(P,1,NN)     : note(NN) } = 1 :- part(P), fromRest(P,0). %changed
+1 { choosenNote(P,T + 1,NN) : note(NN) } 1 :- part(P), fromRest(P,T). %changed
+1 { choosenNote(P,1,NN)     : note(NN) } 1 :- part(P), fromRest(P,0). %changed
 
 %% In some cases we only care about the chromatic position of a part, not the note
 choosenChromatic(P,T,C) :- note(N), part(P), chromaticPosition(C), choosenNote(P,T,N), chromatic(N,C). %changed

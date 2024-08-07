@@ -54,7 +54,7 @@ consonantInterval(7).
 %#domain consonantInterval(CI).
 
 %% Pairs of chromatic positions that are consonant
-consonant(C1,C2) :- chromatic(N,C1), chromatic(N + CI, C2), consonantInterval(CI), chromaticPosition(C1), chromaticPosition(C2).
+consonant(C1,C2) :- note(N), chromatic(N,C1), chromatic(N + CI, C2), consonantInterval(CI), chromaticPosition(C1), chromaticPosition(C2).
 
 %% The interval between two notes
 %% Note there are two possible definitions of modulo distance

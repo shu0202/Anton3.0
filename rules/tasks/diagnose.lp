@@ -26,13 +26,13 @@
 %% Take a piece of music and identifies which (if any) rules it breaks.
 
 %#hide.
-error(P,T,R) :- error(P,T,R).
+error(P,T,R) :- part(P), error(P,T,R).
 #show error/3.
 
 
 % Must have at least one error
 %#domain reason(R).
-errorFound :- error(P,T,R).
+errorFound :- part(P), reason(R), error(P,T,R).
  :- not errorFound.
 
 % To get a unique solution, remove models with 
@@ -40,7 +40,7 @@ errorFound :- error(P,T,R).
 possibleMove(M) :- stepSize(M).
 possibleMove(M) :- leapSize(M).
 possibleMove(0).
- :- choosenNote(P,T,N), choosenNote(P,T+1,N+M),
+ :- part(P), choosenNote(P,T,N), choosenNote(P,T+1,N+M),
     incorrectProgression(P,T), possibleMove(M).
 
 % Likewise with rests
