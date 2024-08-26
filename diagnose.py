@@ -7,7 +7,7 @@ import subprocess
 import re
 from notes import NotesEditor
 
-class Worker(QThread):
+class loading(QThread):
     finished = pyqtSignal()
     error = pyqtSignal(str)
     
@@ -44,19 +44,16 @@ class LoadingScreen(QDialog):
         self.setLayout(layout)
 
 def run_command_with_loading_screen(command):
-    app = QApplication.instance() 
-    if app is None:
-        app = QApplication(sys.argv)
         
     loading_screen = LoadingScreen()
     
-    worker = Worker(command)
-    worker.finished.connect(loading_screen.accept)
+    load = loading(command)
+    load.finished.connect(loading_screen.accept)
     
-    worker.start()
+    load.start()
     loading_screen.exec_()
     
-    worker.wait()
+    load.wait()
 
 class OutputDialog(QDialog):
     def __init__(self, output_text, parent=None):
