@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QVBoxLayout, QPushButton, QLabel, QDialog, QApplicat
 from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QDesktopServices
 import os
+import platform
 
 class OutputDialog(QDialog):
     def __init__(self, output_text, parent=None):
@@ -138,12 +139,15 @@ class Library(QDialog):
         extensions_dialog.exec_()
     
     def handle_extension_click(self, file_name, ext):
+        file_path = os.path.join(self.piece_dir, file_name + ext)
         if ext == '.pdf':
-            file_path = os.path.join(self.piece_dir, file_name + ext)
             QDesktopServices.openUrl(QUrl.fromLocalFile(file_path))
         elif ext == '.wav':
-            file_path = os.path.join(self.piece_dir, file_name + ext)
-            command = "afplay " + file_path
+            if platform.system() == 'Darwin':  # macOS
+                command = "afplay " + file_path
+            elif platform.system() == 'Windows':  # Windows
+                command = "start /B aplay " + file_path
+            
             subprocess.run(command, shell=True)
 
     def confirm_mode(self):
