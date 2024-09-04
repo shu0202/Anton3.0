@@ -15,8 +15,7 @@
 1. run main_screen.py after downloading all prerequisites
 2. set up saving paths using the option function
 
-Note:
-
-For running in terminal, please see README_anton for more information.
+Note: <br />
+For running in terminal, please see README_anton for more information. <br />
 For more example pieces for diagnose, please see folder example.
  
